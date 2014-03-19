@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lycis/ansi.png?branch=master)](https://travis-ci.org/lycis/ansi)
 go-ansi 
 =============
 
