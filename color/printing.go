@@ -27,8 +27,11 @@
 //	rY ... red text on yellow background
 package color
 
-import "fmt"
-import "strings"
+import (
+	"fmt"
+	"io"
+	"strings"
+)
 
 // --- EXPORTED ---
 
@@ -45,7 +48,15 @@ func Print(colorCode string, a ...interface{}) {
 
 func Println(colorCode string, a ...interface{}) {
 	colored := fmt.Sprint(a...)
-	Println(colored)
+	fmt.Println(colored)
+}
+
+func Sprintf(colorCode, format string, a ...interface{}) string {
+	return colourText(colorCode, fmt.Sprintf(format, a))
+}
+
+func Fprintf(colorCode string, w io.Writer, format string, a ...interface{}) (n int, err error) {
+	return fmt.Fprintf(w, Sprintf(colorCode, format, a))
 }
 
 // returns the text colored according to the color code (exported version of colourText)
